@@ -1,0 +1,71 @@
+*{
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: rgb(2, 77, 112);
+  --secondary-color: rgb(74, 113, 122);
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(241, 242, 246);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@for $i from 1 through 10 {
+  // margin
+  
+  .m-#{$i} {
+    margin: $i * 0.5 * 1rem;
+  }
+
+  .mt-#{$i} {
+    margin-top: $i * 0.5 * 1rem;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: $i * 0.5 * 1rem;
+  }
+
+  .mr-#{$i} {
+    margin-right: $i * 0.5 * 1rem;
+  }
+
+  .ml-#{$i} {
+    margin-left: $i * 0.5 * 1rem;
+  }
+
+  // padding
+
+  .p-#{$i} {
+    padding: $i * 0.5 * 1rem;
+  }
+
+  .pt-#{$i} {
+    padding-top: $i * 0.5 * 1rem;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: $i * 0.5 * 1rem;
+  }
+
+  .pr-#{$i} {
+    padding-right: $i * 0.5 * 1rem;
+  }
+
+  .pl-#{$i} {
+    padding-left: $i * 0.5 * 1rem;
+  }
+}

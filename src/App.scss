@@ -1,0 +1,14 @@
+.main_app {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: 100vh;
+
+  .sidebar_wrapper {
+    background-color: white;
+    border-top-right-radius: 20px;
+    box-shadow: 10px 10px 20px rgb(237, 236, 240);
+  }
+
+  .view_section {
+  }
+}

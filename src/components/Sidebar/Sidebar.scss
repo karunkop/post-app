@@ -1,0 +1,45 @@
+#sidebar {
+  width: 100%;
+  background: white;
+  padding: 10px 20px;
+
+  h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin: 15px;
+  }
+
+  #sidebar_menu {
+    margin-top: 30px;
+
+    a {
+      text-decoration: none;
+      color: black
+    }
+
+    .menu_item {
+      display: flex;
+      align-items: center;
+      padding: 10px 10px;
+      border-radius: 3px;
+      transition: 200ms linear all;
+      margin-bottom: 5px;
+      color: rgb(54, 54, 54);
+
+      &:hover {
+        background-color: rgba(195, 228, 255, 0.445);
+      }
+
+
+      &.isActive {
+        background-color: rgba(166, 234, 246, 0.445);
+      }
+
+      .icon_div {
+        margin-right: 20px;
+        color: rgb(13, 183, 189);
+      }
+    }
+  }
+}
