@@ -123,6 +123,7 @@ const UpdatePostModal = ({ isVisible, handleCancel, onSuccess, initialData }) =>
               >
                 <Select
                   placeholder="Select a category"
+                  mode="multiple"
                   allowClear={true}
                   dropdownRender={(menu) => {
                     return (

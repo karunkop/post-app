@@ -1,5 +1,15 @@
 import React, { useState, useCallback } from "react";
-import { Modal, Table, Menu, Dropdown, Button, Row, Col, Tag } from "antd";
+import {
+  Modal,
+  Table,
+  Menu,
+  Dropdown,
+  Button,
+  Row,
+  Col,
+  Tag,
+  Space,
+} from "antd";
 import { DownOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import ViewLayout from "../../components/ViewLayout/ViewLayout";
 import AddPostModal from "./AddPostModal";
@@ -10,10 +20,7 @@ import UpdatePostModal from "./UpdatePostModal";
 import deletePost from "../../action-creators/deletePost";
 import { showSuccessNotification } from "../../components/Notification/Notification";
 
-const showDeleteConfirm = ({
-  onOk,
-  onCancel,
-}) => {
+const showDeleteConfirm = ({ onOk, onCancel }) => {
   Modal.confirm({
     title: "Do you Want to delete this post?",
     icon: <ExclamationCircleOutlined />,
@@ -77,11 +84,18 @@ const PostPage = () => {
       title: "Category",
       dataIndex: "categoryId",
       key: "categoryId",
-      render: (categoryId) => {
+      render: (categoryIdArray) => {
         return (
-          <Tag color="success">
-            {categories.find((category) => category.id === categoryId)?.name}
-          </Tag>
+          <Space>
+            {categoryIdArray.map((categoryId) => (
+              <Tag color="success">
+                {
+                  categories.find((category) => category.id === categoryId)
+                    ?.name
+                }
+              </Tag>
+            ))}
+          </Space>
         );
       },
     },

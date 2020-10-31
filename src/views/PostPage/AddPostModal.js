@@ -35,6 +35,8 @@ const AddPostModal = ({ isVisible, handleCancel, onSuccess }) => {
   };
 
   const onFinish = async (fieldsValue) => {
+
+    console.log(fieldsValue.categoryIdArray)
     setLoading(true)
     try {
 
@@ -126,7 +128,7 @@ const AddPostModal = ({ isVisible, handleCancel, onSuccess }) => {
           </Col>
           <Col span={12}>
             <Form.Item name="categoryId" label="Category" rules={[{ required: true }]}>
-            <Select placeholder="Select a category" allowClear={true} dropdownRender={(menu) => {
+            <Select mode="multiple" placeholder="Select a category" allowClear={true} dropdownRender={(menu) => {
               return <div>
                 {menu}
                 <div className="new_category_button" onClick={() => setShowCategoryAddModal(true)}>

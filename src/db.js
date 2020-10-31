@@ -5,7 +5,7 @@ const databaseFactory = () => {
 
   const init = async () => {
     await db.version(1).stores({
-      post: 'id, slug, title, body, categoryId',
+      post: 'id, slug, title, body, *categoryId',
       category: 'id, name'
     });
   }
