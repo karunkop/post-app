@@ -1,21 +1,15 @@
-import { Category } from "../db";
 import {
-  CategoryActionTypes,
   ADD_CATEGORY,
   UPDATE_CATEGORY,
   DELETE_CATEGORY,
   BULK_ADD_CATEGORIES,
 } from "../action-types/categoryActionTypes";
 
-export type CategoryState = {
-  categories: Category[];
-};
-
-const initialState: CategoryState = {
+const initialState = {
   categories: [],
 };
 
-const categoryReducer = (state = initialState, action: CategoryActionTypes): CategoryState => {
+const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CATEGORY:
       return {

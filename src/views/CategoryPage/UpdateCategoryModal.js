@@ -15,11 +15,9 @@ import {
   showErrorNotification,
 } from "../../components/Notification/Notification";
 
-import { Category } from "../../db";
-
 import updateCategory from "../../action-creators/updateCategory";
 
-const UpdateCategoryModal: React.FC<{ isVisible: boolean, handleCancel: () => void, onSuccess: () => void, initialData: Category}>= ({ isVisible, handleCancel, onSuccess, initialData }) => {
+const UpdateCategoryModal = ({ isVisible, handleCancel, onSuccess, initialData }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = React.useState(false);
 
@@ -34,11 +32,11 @@ const UpdateCategoryModal: React.FC<{ isVisible: boolean, handleCancel: () => vo
     // eslint-disable-next-line
   }, [initialData])
 
-  const onFinish = async (fieldsValue: any) => {
+  const onFinish = async (fieldsValue) => {
     setLoading(true)
     try {
 
-      const category: Category = {
+      const category = {
         id: initialData.id,
         name: fieldsValue.name,
         description: fieldsValue.description

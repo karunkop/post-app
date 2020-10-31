@@ -2,12 +2,10 @@ import React, { useState, useCallback } from "react";
 import { Modal, Table, Menu, Dropdown, Button, Row, Col, Tag } from "antd";
 import { DownOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import ViewLayout from "../../components/ViewLayout/ViewLayout";
-import { Post } from "../../db";
 import AddPostModal from "./AddPostModal";
 
 import "./PostPage.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { State } from "../../reducers/rootReducer";
 import UpdatePostModal from "./UpdatePostModal";
 import deletePost from "../../action-creators/deletePost";
 import { showSuccessNotification } from "../../components/Notification/Notification";
@@ -15,9 +13,6 @@ import { showSuccessNotification } from "../../components/Notification/Notificat
 const showDeleteConfirm = ({
   onOk,
   onCancel,
-}: {
-  onOk: () => void;
-  onCancel: () => void;
 }) => {
   Modal.confirm({
     title: "Do you Want to delete this post?",
@@ -28,7 +23,7 @@ const showDeleteConfirm = ({
   });
 };
 
-const dummySelectedPost: Post = {
+const dummySelectedPost = {
   id: "",
   body: "",
   categoryId: "",
@@ -36,21 +31,21 @@ const dummySelectedPost: Post = {
   title: "",
 };
 
-const PostPage: React.FC<{}> = () => {
+const PostPage = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
-  const [selectedPost, setSelectedPost] = useState<Post>(dummySelectedPost);
+  const [selectedPost, setSelectedPost] = useState(dummySelectedPost);
 
   const dispatch = useDispatch();
-  const categories = useSelector((state: State) => state.category.categories);
-  const posts = useSelector((state: State) => state.post.posts);
+  const categories = useSelector((state) => state.category.categories);
+  const posts = useSelector((state) => state.post.posts);
 
   const closeUpdateModal = useCallback(() => {
     setSelectedPost(dummySelectedPost);
     setShowUpdateModal(false);
   }, []);
 
-  const handleDelete = useCallback((post: Post) => {
+  const handleDelete = useCallback((post) => {
     showDeleteConfirm({
       onOk: async () => {
         try {
@@ -82,7 +77,7 @@ const PostPage: React.FC<{}> = () => {
       title: "Category",
       dataIndex: "categoryId",
       key: "categoryId",
-      render: (categoryId: string) => {
+      render: (categoryId) => {
         return (
           <Tag color="success">
             {categories.find((category) => category.id === categoryId)?.name}
@@ -93,7 +88,7 @@ const PostPage: React.FC<{}> = () => {
     {
       title: "Actions",
       key: "action",
-      render: (text: string, record: Post) => {
+      render: (text, record) => {
         const ActionMenu = () => {
           return (
             <Menu>

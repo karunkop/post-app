@@ -1,8 +1,7 @@
-import { ActionCreator } from "../types";
-import db, { Post } from "../db";
+import db from "../db";
 import { DELETE_POST } from "../action-types/postActionTypes";
 
-const deletePost= (post: Post): ActionCreator => async (dispatch, getState) => {
+const deletePost= (post) => async (dispatch, getState) => {
   await db.deletePost(post.id);
   dispatch({
     type: DELETE_POST,

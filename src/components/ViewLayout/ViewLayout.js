@@ -1,7 +1,7 @@
 import React from "react";
 import "./ViewLayout.scss";
 
-const ViewLayout: React.FC<{ title: string }> = ({ children, title }) => {
+const ViewLayout = ({ children, title }) => {
   return (
     <section id="view_layout">
       <h2 id="view_page_title">{title}</h2>

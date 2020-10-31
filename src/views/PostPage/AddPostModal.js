@@ -17,17 +17,16 @@ import {
   showSuccessNotification,
   showErrorNotification,
 } from "../../components/Notification/Notification";
-import { Post } from "../../db";
-import { State } from "../../reducers/rootReducer";
+
 import addPost from "../../action-creators/addPost";
 import AddCategoryModal from "../CategoryPage/AddCategoryModal";
 
-const AddPostModal: React.FC<{ isVisible: boolean, handleCancel: () => void, onSuccess: () => void}>= ({ isVisible, handleCancel, onSuccess }) => {
+const AddPostModal = ({ isVisible, handleCancel, onSuccess }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = React.useState(false);
   const [showCategoryAddModal, setShowCategoryAddModal] = React.useState(false);
 
-  const categories = useSelector((state: State) => state.category.categories)
+  const categories = useSelector((state) => state.category.categories)
 
   const dispatch = useDispatch()
 
@@ -35,11 +34,11 @@ const AddPostModal: React.FC<{ isVisible: boolean, handleCancel: () => void, onS
     form.submit();
   };
 
-  const onFinish = async (fieldsValue: any) => {
+  const onFinish = async (fieldsValue) => {
     setLoading(true)
     try {
 
-      const post: Post = {
+      const post = {
         id: uuidv4(),
         slug: fieldsValue.slug,
         title: fieldsValue.title,
@@ -127,7 +126,7 @@ const AddPostModal: React.FC<{ isVisible: boolean, handleCancel: () => void, onS
           </Col>
           <Col span={12}>
             <Form.Item name="categoryId" label="Category" rules={[{ required: true }]}>
-            <Select placeholder="Select a category" allowClear={true} dropdownRender={(menu: React.ReactNode) => {
+            <Select placeholder="Select a category" allowClear={true} dropdownRender={(menu) => {
               return <div>
                 {menu}
                 <div className="new_category_button" onClick={() => setShowCategoryAddModal(true)}>

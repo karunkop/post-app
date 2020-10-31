@@ -16,10 +16,9 @@ import {
   showSuccessNotification,
   showErrorNotification,
 } from "../../components/Notification/Notification";
-import { Category } from "../../db";
 import addCategory from "../../action-creators/addCategory";
 
-const AddCategoryModal: React.FC<{ isVisible: boolean, handleCancel: () => void, onSuccess: () => void}>= ({ isVisible, handleCancel, onSuccess }) => {
+const AddCategoryModal = ({ isVisible, handleCancel, onSuccess }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = React.useState(false);
 
@@ -29,7 +28,7 @@ const AddCategoryModal: React.FC<{ isVisible: boolean, handleCancel: () => void,
     form.submit();
   };
 
-  const onFinish = async (fieldsValue: Category) => {
+  const onFinish = async (fieldsValue) => {
     setLoading(true)
     try {
 

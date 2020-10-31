@@ -4,7 +4,7 @@ import classname from 'classnames';
 
 import "./Sidebar.scss";
 
-const Sidebar:React.FC<{}> = ({ children }) => {
+const Sidebar= ({ children }) => {
   return (
     <aside id="sidebar">
       <h1>Test App</h1>
@@ -15,12 +15,7 @@ const Sidebar:React.FC<{}> = ({ children }) => {
   );
 };
 
-export const MenuItem: React.FC<{
-  icon: React.ReactNode;
-  title: string;
-  link: string;
-  isActive: boolean;
-}> = ({ icon, title, link, isActive }) => {
+export const MenuItem = ({ icon, title, link, isActive }) => {
   return (
     <Link to={link}>
       <div className={classname({

@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Modal, Table, Menu, Dropdown, Button, Row, Col } from "antd";
 import { DownOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import ViewLayout from "../../components/ViewLayout/ViewLayout";
-import { Category } from "../../db";
 import AddCategoryModal from "./AddCategoryModal";
-import { State } from "../../reducers/rootReducer";
 import UpdateCategoryModal from "./UpdateCategoryModal";
 import {
   showSuccessNotification,
@@ -16,9 +14,6 @@ import deleteCategory from "../../action-creators/deleteCategory";
 const showDeleteConfirm = ({
   onOk,
   onCancel,
-}: {
-  onOk: () => void;
-  onCancel: () => void;
 }) => {
   Modal.confirm({
     title: "Do you Want to delete this category?",
@@ -29,20 +24,20 @@ const showDeleteConfirm = ({
   });
 };
 
-const dummyCategory: Category = {
+const dummyCategory = {
   id: "",
   name: "",
   description: "",
 };
 
-const CategoryPage: React.FC<{}> = () => {
+const CategoryPage = () => {
   const [showAddModal, setShowModal] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<Category>(
+  const [selectedCategory, setSelectedCategory] = useState(
     dummyCategory
   );
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
-  const categories = useSelector((state: State) => state.category.categories);
+  const categories = useSelector((state) => state.category.categories);
   const dispatch = useDispatch();
 
   const closeUpdateModal = useCallback(() => {
@@ -51,7 +46,7 @@ const CategoryPage: React.FC<{}> = () => {
     // eslint-disable-next-line
   }, []);
 
-  const handleDelete = useCallback((category: Category) => {
+  const handleDelete = useCallback((category) => {
     showDeleteConfirm({
       onOk: async () => {
         try {
@@ -87,7 +82,7 @@ const CategoryPage: React.FC<{}> = () => {
     {
       title: "Actions",
       key: "action",
-      render: (text: string, record: Category) => {
+      render: (text, record) => {
         const ActionMenu = () => {
           return (
             <Menu>

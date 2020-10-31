@@ -1,25 +1,18 @@
-import { Post } from "../db";
-
 import {
   ADD_POST,
-  PostActionTypes,
   BULK_ADD_POSTS,
   UPDATE_POST,
   DELETE_POST,
 } from "../action-types/postActionTypes";
 
-export type PostState = {
-  posts: Post[];
-};
-
-const initialState: PostState = {
+const initialState = {
   posts: [],
 };
 
 const postReducer = (
   state = initialState,
-  action: PostActionTypes
-): PostState => {
+  action
+) => {
   switch (action.type) {
     case ADD_POST:
       return {

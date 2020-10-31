@@ -7,22 +7,15 @@ import {
   showSuccessNotification,
   showErrorNotification,
 } from "../../components/Notification/Notification";
-import { Post } from "../../db";
-import { State } from "../../reducers/rootReducer";
 import AddCategoryModal from "../CategoryPage/AddCategoryModal";
 import updatePost from "../../action-creators/updatePost";
 
-const UpdatePostModal: React.FC<{
-  isVisible: boolean;
-  handleCancel: () => void;
-  onSuccess: () => void;
-  initialData: Post;
-}> = ({ isVisible, handleCancel, onSuccess, initialData }) => {
+const UpdatePostModal = ({ isVisible, handleCancel, onSuccess, initialData }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = React.useState(false);
   const [showCategoryAddModal, setShowCategoryAddModal] = React.useState(false);
 
-  const categories = useSelector((state: State) => state.category.categories);
+  const categories = useSelector((state) => state.category.categories);
 
   const dispatch = useDispatch();
 
@@ -35,10 +28,10 @@ const UpdatePostModal: React.FC<{
     form.submit();
   };
 
-  const onFinish = async (fieldsValue: any) => {
+  const onFinish = async (fieldsValue) => {
     setLoading(true);
     try {
-      const post: Post = {
+      const post = {
         id: initialData.id,
         slug: fieldsValue.slug,
         title: fieldsValue.title,
@@ -131,7 +124,7 @@ const UpdatePostModal: React.FC<{
                 <Select
                   placeholder="Select a category"
                   allowClear={true}
-                  dropdownRender={(menu: React.ReactNode) => {
+                  dropdownRender={(menu) => {
                     return (
                       <div>
                         {menu}

@@ -1,8 +1,7 @@
-import { ActionCreator } from "../types";
-import db, { Post } from "../db";
+import db from "../db";
 import { UPDATE_POST } from "../action-types/postActionTypes";
 
-const updatePost= (post: Post): ActionCreator => async (dispatch, getState) => {
+const updatePost= (post) => async (dispatch, getState) => {
   await db.updatePost(post.id, post);
   dispatch({
     type: UPDATE_POST,
